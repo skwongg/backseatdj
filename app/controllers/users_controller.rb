@@ -1,8 +1,37 @@
 class UsersController < ApplicationController
-Dotenv.load
+  Dotenv.load
 
- def index
-      client = SoundCloud.new({
+  def index
+    p "*"*80
+    p username = params["username"]
+    p "*"*80
+    p pass = params["password"]
+    p "*"*80
+
+    if User.where(user_name: username).first
+
+    else
+      # @error = error.full_message
+      #redirect or render error messasge
+    end
+    login = User.where(user_name: username).first
+    p login
+    p "login"
+    p login.password
+    if pass == login.password_hash
+      p "works"
+    else
+      p "fail"
+    end
+
+    # user_login = params["username"]
+    # session[:user_id] = @current_user.id
+    # p "*"*80
+    # if User.where(username: user_login).exists?
+
+
+
+    client = SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
       :username => ENV['username'],
@@ -10,8 +39,8 @@ Dotenv.load
       :redirect_uri  => "http://localhost:3000/callback.html"
       # :redirect_uri => "google.com"
 
-    })
-      redirect_to client.authorize_url()
+      })
+    redirect_to client.authorize_url()
   end
 
   def auth
@@ -22,7 +51,7 @@ Dotenv.load
       :password => ENV['password'],
       # :redirect_uri  => "http://localhost:3000/callback.html"
       # :redirect_uri => "/users"
-    })
+      })
     code = params[:code]
     access_token = client.exchange_token(:code => code)
     # p access_token
@@ -40,18 +69,24 @@ Dotenv.load
     # redirect_to "http://localhost:9393/users/1/playlists"
   end
 
+  def callback
+    # post to create session
+  end
+
   def new
     # User.find(params[:id])
   end
 
   def create
-    user = User.create(user_name: params[:user_name], password: params[:password])
+    @user = User.create(user_name: params[:user_name], password: params[:password])
     p "*" * 100
     p params
-    p user
+    p @user
+    p @user["user_name"]
+
     p "*" * 100
-    # render json: user
-    redirect_to root_path
+    render json: {redirect: "http://localhost:9393"}
+    # redirect_to root_path
   end
 
 end

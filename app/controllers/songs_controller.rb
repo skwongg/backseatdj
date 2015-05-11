@@ -3,6 +3,7 @@ class SongsController < ApplicationController
 Dotenv.load
 
   def index
+
     client=SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
