@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 20150508003019) do
     t.string   "title"
     t.integer  "track_id"
     t.integer  "playlist_id"
-    t.integer  "skip",        default: 0
-    t.integer  "replay",      default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
