@@ -75,8 +75,8 @@ class UsersController < ApplicationController
     p "*" * 100
     p params
     p "*" * 100
-    @user = User.create(user_name: params["user_name"], password: params["password"])
-
+    user = User.new(user_name: params["user_name"], password: params["password"])
+    user.save
   end
 
 end

@@ -36,5 +36,5 @@ gem 'rails_12factor'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 group :test, :development do
 gem 'better_errors'
-gem 'binding_ of_caller'
+gem 'binding_of_caller'
 end
