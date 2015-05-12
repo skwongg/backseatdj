@@ -1,8 +1,20 @@
 class UsersController < ApplicationController
-Dotenv.load
+  Dotenv.load
 
- def index
-      client = SoundCloud.new({
+  def index
+    # p "*"*80
+    # p username = params["username"]
+    # p "*"*80
+    # p pass = params["password"]
+    # p "*"*80
+    # p User.exists?(user_name: params["username"])
+    # user =  User.where(user_name: params["username"]).first
+    # p user.password
+    # p user.password == params["password"]
+    # p User.where(user_name: params["username"]).first.password = params["password"]
+
+    if User.exists?(user_name: params["username"]) && User.where(user_name: params["username"]).first.password == params["password"]
+    client = SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
       :username => ENV['username'],
@@ -10,8 +22,18 @@ Dotenv.load
       :redirect_uri  => "http://localhost:3000/callback.html"
       # :redirect_uri => "google.com"
 
-    })
-      redirect_to client.authorize_url()
+      })
+    redirect_to client.authorize_url()
+
+    else
+      # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
+      redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
+    end
+
+
+
+
+
   end
 
   def auth
@@ -22,7 +44,7 @@ Dotenv.load
       :password => ENV['password'],
       # :redirect_uri  => "http://localhost:3000/callback.html"
       # :redirect_uri => "/users"
-    })
+      })
     code = params[:code]
     access_token = client.exchange_token(:code => code)
     # p access_token
@@ -40,18 +62,21 @@ Dotenv.load
     # redirect_to "http://localhost:9393/users/1/playlists"
   end
 
+  def callback
+    # post to create session
+    # manual sessions to rail api
+  end
+
   def new
     # User.find(params[:id])
   end
 
   def create
-    user = User.create(user_name: params[:user_name], password: params[:password])
     p "*" * 100
     p params
-    p user
     p "*" * 100
-    # render json: user
-    redirect_to root_path
+    @user = User.create(user_name: params["user_name"], password: params["password"])
+
   end
 
 end

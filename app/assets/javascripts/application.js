@@ -5,7 +5,6 @@
 //= require_tree .
 
 
-
 <script src="http://connect.soundcloud.com/sdk.js"></script>
 <script>
 // initialize client with app credentials
