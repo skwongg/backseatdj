@@ -26,13 +26,9 @@ class UsersController < ApplicationController
     redirect_to client.authorize_url()
 
     else
-      # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
-      redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
+      redirect_to "https://soundcloud.com/captioncat/sad-trombone"
+      # redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
     end
-
-
-
-
 
   end
 
@@ -59,12 +55,19 @@ class UsersController < ApplicationController
     p "*" * 100
 
    #NO RENDER after HTTParty?!?!?!??!?!
-    # redirect_to "http://localhost:9393/users/1/playlists"
+    redirect_to "http://localhost:9393/users/redirect"
   end
 
   def callback
     # post to create session
     # manual sessions to rail api
+  end
+
+  def session
+    p params["user_name"]
+    @user = User.where(user_name: params["user_name"]).first
+    p @user
+    render json: @user
   end
 
   def new
@@ -75,7 +78,9 @@ class UsersController < ApplicationController
     p "*" * 100
     p params
     p "*" * 100
-    @user = User.create(user_name: params["user_name"], password: params["password"])
+    user = User.new(user_name: params["user_name"], password: params["password"])
+    p user
+    user.save
 
   end
 
