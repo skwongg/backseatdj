@@ -26,7 +26,8 @@ class UsersController < ApplicationController
     redirect_to client.authorize_url()
 
     else
-      redirect_to "https://soundcloud.com/captioncat/sad-trombone"
+      redirect_to "http://xukev.in"
+      # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
       # redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
     end
 
@@ -78,10 +79,10 @@ class UsersController < ApplicationController
     p "*" * 100
     p params
     p "*" * 100
-    user = User.new(user_name: params["user_name"], password: params["password"])
+    user = User.create(user_name: params["user_name"], password: params["password"])
     p user
-    user.save
-
+    # user.save
+    redirect_to "http://localhost:9393"
   end
 
 end
