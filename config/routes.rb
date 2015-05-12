@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     get '/callback' => 'users#auth'
 
-
+    get '/session' => 'users#session'
     resources :users do
       resources :playlists do
         member do

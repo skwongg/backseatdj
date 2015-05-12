@@ -1,5 +1,13 @@
 class PlaylistsController < ApplicationController
+Dotenv.load
 
+  def index
+    @user = User.find(params[:user_id])
+    @playlists = @user.playlists
+
+    render json: {playlist: @playlists, user: @user}
+
+  end
 
   # def new
   #   client=SoundCloud.new({
@@ -33,23 +41,29 @@ class PlaylistsController < ApplicationController
 
   def create
   # p params[:track_id]
-  p "*" * 80
-    p params
-    @user = User.find(params[:user_id])
-    # @playlist = @user.playlists.create(name: params[:playlist_name])
+  # p "*" * 80
+    # p params
+    # {"id"=>"3", "name"=>"dsdsdsa", "genre"=>"qwqwqwqwq", "user_id"=>"3"}
+    @user = User.find(params['user_id'])
+    @playlist = @user.playlists.create(name: params["name"],
+      genre: params["genre"])
+
+    render json: @playlist
 
     # @playlist = Playlist.create(name: params[:playlist_name], user_id:params[:user_id])
     # @playlist = @playlist.songs
     # @playlist = Playlist.all
 
-    @playlist = Playlist.create(name: params[:name], genre: params[:genre], user_id:params[:user_id])
+    # @playlist = Playlist.create(name: params[:name], genre: params[:genre], user_id:params[:user_id])
+
+    # p @playlist
     #   playlist = @user.playlists.create(name: params[:name], genre: parmas[:genre], user_id: params[:user_id])
-    p "*" * 80
-    p @playlist
+    # p "*" * 80
+    # p @playlist
 
     ##ACTUAL playlist would exist already from the user instances
   ###@song = @user.playlists.find(1).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
-  render :json => @playlist
+  # render json: {playlist: @playlists, user: @user}
 
 
 
@@ -60,7 +74,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    p params
+    # p params
     # @playlist=Playlist.find(params[:id])
         @user = User.find(params[:user_id])
         @playlist = Playlist.find(params[:id])
@@ -80,10 +94,4 @@ class PlaylistsController < ApplicationController
   #   #
   ##test code end
 
-  def index
-    p params
-    @user = User.find(params[:user_id])
-    fart = @user.playlists
-    render :json => {user: @user, data: fart}
-  end
 end
