@@ -3,6 +3,7 @@ class CreateSongs < ActiveRecord::Migration
     create_table :songs do |t|
       t.string :title    ##Soundcloud outputs weren't helpful
       t.integer :track_id
+      t.string :song_url
       t.belongs_to :playlist
       t.integer :skip, default: 0
       t.integer :replay, default: 0
