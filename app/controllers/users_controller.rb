@@ -79,15 +79,12 @@ class UsersController < ApplicationController
     p "*" * 100
     p params
     p "*" * 100
-<<<<<<< HEAD
+
     user = User.create(user_name: params["user_name"], password: params["password"])
     p user
     # user.save
     redirect_to "http://localhost:9393"
-=======
-    user = User.new(user_name: params["user_name"], password: params["password"])
-    user.save
->>>>>>> geterdone
+
   end
 
 end
