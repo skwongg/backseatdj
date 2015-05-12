@@ -2,50 +2,18 @@ class UsersController < ApplicationController
   Dotenv.load
 
   def index
-    p "*"*80
-    p username = params["username"]
-    p "*"*80
-    p pass = params["password"]
-    p "*"*80
-    p User.exists?(user_name: params["username"])
-    user =  User.where(user_name: params["username"]).first
-    p user.password
-    p user.password == params["password"]
-
-
-    if User.exists?(user_name: params["username"])
-    else
-
-
-    # if User.exists?(user_name: params["username"])
-    #   if User.where(user_name: params["username"]).first.password == params["password"]
-    #   end
-    # end
-
-    # if User.where(user_name: username).first
-    #   p "yo"
-    # else
-    #   p "fuck"
-    #   redirect_to "http://localhost:9393"
-    # end
-
-    # login = User.where(user_name: params["username"]).first
-    # p login
-    # p "login"
-    # # p login.password
-    # if pass == login.password_hash
-    #   p "works"
-    # else
-    #   p "fail"
-    # end
-
-    # user_login = params["username"]
-    # session[:user_id] = @current_user.id
     # p "*"*80
-    # if User.where(username: user_login).exists?
+    # p username = params["username"]
+    # p "*"*80
+    # p pass = params["password"]
+    # p "*"*80
+    # p User.exists?(user_name: params["username"])
+    # user =  User.where(user_name: params["username"]).first
+    # p user.password
+    # p user.password == params["password"]
+    # p User.where(user_name: params["username"]).first.password = params["password"]
 
-
-
+    if User.exists?(user_name: params["username"]) && User.where(user_name: params["username"]).first.password == params["password"]
     client = SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
@@ -56,6 +24,16 @@ class UsersController < ApplicationController
 
       })
     redirect_to client.authorize_url()
+
+    else
+      # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
+      redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
+    end
+
+
+
+
+
   end
 
   def auth
@@ -86,6 +64,7 @@ class UsersController < ApplicationController
 
   def callback
     # post to create session
+    # manual sessions to rail api
   end
 
   def new

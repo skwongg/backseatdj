@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
+  validates_presence_of   :username,      on: :create
+  validates_uniqueness_of :username,      on: :create
+  validates_presence_of   :password,      on: :create
 
 end
