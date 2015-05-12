@@ -7,22 +7,37 @@ class UsersController < ApplicationController
     p "*"*80
     p pass = params["password"]
     p "*"*80
+    p User.exists?(user_name: params["username"])
+    user =  User.where(user_name: params["username"]).first
+    p user.password
+    p user.password == params["password"]
 
-    if User.where(user_name: username).first
 
+    if User.exists?(user_name: params["username"])
     else
-      # @error = error.full_message
-      #redirect or render error messasge
-    end
-    login = User.where(user_name: username).first
-    p login
-    p "login"
-    p login.password
-    if pass == login.password_hash
-      p "works"
-    else
-      p "fail"
-    end
+
+
+    # if User.exists?(user_name: params["username"])
+    #   if User.where(user_name: params["username"]).first.password == params["password"]
+    #   end
+    # end
+
+    # if User.where(user_name: username).first
+    #   p "yo"
+    # else
+    #   p "fuck"
+    #   redirect_to "http://localhost:9393"
+    # end
+
+    # login = User.where(user_name: params["username"]).first
+    # p login
+    # p "login"
+    # # p login.password
+    # if pass == login.password_hash
+    #   p "works"
+    # else
+    #   p "fail"
+    # end
 
     # user_login = params["username"]
     # session[:user_id] = @current_user.id
