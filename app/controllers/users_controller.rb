@@ -78,15 +78,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_name: params[:user_name], password: params[:password])
     p "*" * 100
     p params
-    p @user
-    p @user["user_name"]
-
     p "*" * 100
-    render json: {redirect: "http://localhost:9393"}
-    # redirect_to root_path
+    @user = User.create(user_name: params["user_name"], password: params["password"])
+
   end
 
 end
