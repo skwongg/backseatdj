@@ -4,8 +4,10 @@ class CreateSongs < ActiveRecord::Migration
       t.string :title    ##Soundcloud outputs weren't helpful
       t.integer :track_id
       t.belongs_to :playlist
-      t.integer :skip, default: 0
-      t.integer :replay, default: 0
+      t.integer :upskip, default: 0
+      t.integer :downskip, default: 0
+      t.integer :upreplay, default: 0
+      t.integer :downreplay, default: 0
 
       t.timestamps null: false
     end
