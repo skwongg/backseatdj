@@ -42,8 +42,8 @@ Dotenv.load
   def create
   # p params[:track_id]
   # p "*" * 80
-    p params
-    {"id"=>"3", "name"=>"dsdsdsa", "genre"=>"qwqwqwqwq", "user_id"=>"3"}
+    # p params
+    # {"id"=>"3", "name"=>"dsdsdsa", "genre"=>"qwqwqwqwq", "user_id"=>"3"}
     @user = User.find(params['user_id'])
     @playlist = @user.playlists.create(name: params["name"],
       genre: params["genre"])
@@ -74,7 +74,7 @@ Dotenv.load
   end
 
   def show
-    p params
+    # p params
     # @playlist=Playlist.find(params[:id])
         @user = User.find(params[:user_id])
         @playlist = Playlist.find(params[:id])
