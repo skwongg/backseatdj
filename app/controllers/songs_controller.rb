@@ -11,7 +11,7 @@ Dotenv.load
       :password => ENV['password']
       })
       @songs = client.get('/tracks', :q => params[:search], :limit => 10)
-
+      p @songs
       render json: @songs
   end
 
@@ -21,10 +21,12 @@ Dotenv.load
   ##ACTUAL playlist would exist already from the user instances
   @user = User.find(params[:user_id])
   # @song = @user.playlists.find(params[:playlist_id]).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
+
   @song = Song.create!(track_id: params[:track_id],
-                       title: params[:title],
-                       playlist_id: params[:playlist_id],
-                       song_url: params[:song_url])
+                        title: params[:title],
+                        playlist_id: params[:playlist_id],
+                        artwork_url: params[:artwork_url],
+                        song_url: params[:song_url])
   # render :json => @playlist
 
 
