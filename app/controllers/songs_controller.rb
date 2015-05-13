@@ -23,7 +23,8 @@ Dotenv.load
   # @song = @user.playlists.find(params[:playlist_id]).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
   @song = Song.create!(track_id: params[:track_id],
                        title: params[:title],
-                       playlist_id: params[:playlist_id])
+                       playlist_id: params[:playlist_id],
+                       song_url: params[:song_url])
   # render :json => @playlist
 
 
