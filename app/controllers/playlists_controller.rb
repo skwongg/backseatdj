@@ -104,3 +104,13 @@ Dotenv.load
   end
 
 end
+
+
+  # var soundArray=songs
+  #     SC.stream("http://api.soundcloud.com/tracks/" + songs[Math.random()*songs.length].soundcloud_id, {onfinish:
+  #             function(sound){
+  #               var index = soundArray.indexOf(sound);
+  #               if (soundArray[index + 1] !== undefined) {
+  #                     chain(soundArray[index + 1]);
+  #               }
+  #             }} )
