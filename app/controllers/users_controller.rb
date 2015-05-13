@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     # p user.password == params["password"]
     # p User.where(user_name: params["username"]).first.password = params["password"]
 
-    if User.exists?(user_name: params["username"]) && User.where(user_name: params["username"]).first.password == params["password"]
+    # if User.exists?(user_name: params["username"]) && User.where(user_name: params["username"]).first.password == params["password"]
     client = SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
@@ -25,11 +25,11 @@ class UsersController < ApplicationController
       })
     redirect_to client.authorize_url()
 
-    else
-      redirect_to "http://xukev.in"
-      # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
-      # redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
-    end
+    # else
+    #   redirect_to "http://xukev.in"
+    #   # redirect_to "https://soundcloud.com/captioncat/sad-trombone"
+    #   # redirect_to "https://www.youtube.com/watch?v=fmz-K2hLwSI"
+    # end
 
   end
 
