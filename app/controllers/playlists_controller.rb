@@ -93,5 +93,14 @@ Dotenv.load
   #   #     tracks = [21778201, 22448500, 21922889].map {|id| {:id => id}}
   #   #
   ##test code end
+  def play
+    userid = params["user_id"].to_i
+    play = params["id"].to_i
+    user = User.find(userid)
+    list = user.playlists.find(play)
+    songs = list.songs
+
+    render json: songs
+  end
 
 end
