@@ -4,9 +4,7 @@ Dotenv.load
   def index
     @user = User.find(params[:user_id])
     @playlists = @user.playlists
-
     render json: {playlist: @playlists, user: @user}
-
   end
 
   # def new
@@ -47,9 +45,7 @@ Dotenv.load
     @user = User.find(params['user_id'])
     @playlist = @user.playlists.create(name: params["name"],
       genre: params["genre"])
-
     render json: @playlist
-
     # @playlist = Playlist.create(name: params[:playlist_name], user_id:params[:user_id])
     # @playlist = @playlist.songs
     # @playlist = Playlist.all
@@ -76,8 +72,8 @@ Dotenv.load
   def show
     # p params
     # @playlist=Playlist.find(params[:id])
-        @user = User.find(params[:user_id])
-        @playlist = Playlist.find(params[:id])
+    @user = User.find(params[:user_id])
+    @playlist = Playlist.find(params[:id])
     # @playlist_name = params[:name]
 
     # @playlist = @user.playlist.find(params[:id])
@@ -85,7 +81,7 @@ Dotenv.load
     # @user=User.find(1)
     # @songs = @user.playlists.find(1).songs.each do |x|
            # x.
-           render json: {user: @user, playlist: @playlist }
+    render json: {user: @user, playlist: @playlist }
 
   end
   #   # tracks will take song id params to populate array used make a new playlist
