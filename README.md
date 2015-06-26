@@ -1,13 +1,9 @@
 Created by David Hallinan, Brandon Chan, Katie Eaton, Leandra Kim, and Silas Kwong.
 
-Backseat DJ is a mobile app designed to allow the passengers in a car besides shotgun to collaboratively vote on songs to play, songs to skip, and songs to repeat. This app was created using the SoundCloud API including SoundCloud O-Auth.
+Backseat DJ is a mobile web app designed to allow the passengers in a car besides shotgun to collaboratively vote on songs to play, songs to skip, and songs to repeat. This app was created using the SoundCloud API including SoundCloud O-Auth.
 
-NOTE: This is the front end version, "Backseat DJ Backend" is needed to work with this app.
+The front end of this web application consists of a mobile first css library using a Sinatra skeleton framework. In the future, there will be native iOS and Android applications bring this app to life.
 
-The front end consists of a mobile first css library using a Sinatra skeleton framework with desire to be implimented with a native iOS and Android Framework, or using Ionic framework to bring this app to life.
+The back end is designed solely to act as an API to maintain a decoupled architecture design pattern. The Rails API back end features a PostgreSQL database for the user, playlist, and song data. Firebase was implemented to manage the votes from multiple users simultaneously.
 
-The backend is designed in rails-api with a decoupled architecture with desire to be implimented with a native iOS and Android Framework, or using Ionic framework to bring this app to life. The backend is designed with a postgresql database for most for the users, playlists, and songs. The votes is linked with Firebase in order to have multiple users vote simultaneously.
-
-We are deployed to Heroku so checkout our app.
-
-This app was created as a final project for DevBootcamp Rock Doves 2015.
+This app was created as a final project for DevBootcamp.
