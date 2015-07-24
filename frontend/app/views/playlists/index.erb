@@ -1,0 +1,37 @@
+<div class="header-container debug">
+            <header class="wrapper clearfix debug">
+                <!-- <h1 class="title font1">Backseat DJ</h1> -->
+                <img src="http://i.imgur.com/hsMeLzq.png" width="320">
+            </header>
+</div>
+
+
+<!-- Lists all the playlists for a user -->
+
+
+<!-- Form to create a new playlist -->
+
+    <div class="main-container back_img debug">
+            <div class="main wrapper clearfix debug">
+              <div class="info">
+              <form class="playlist-create cent" action="http://localhost:9393/users/<%=@user%>/playlists" method="POST">
+              <input type="text" name="name" placeholder="Name">
+              <input type="text" name="genre" placeholder="Genre">
+              <input type="text" placeholder="Number of Riders">
+              <input type="submit">
+              </form>
+
+            </div>
+              <h1 class="playlist-index bang stroke fontx3 cent"> <%= @current_user["user_name"] %>'s Playlist</h1>
+              <% @playlists.each do |playlist| %>
+              <div class="playlist_name animate"><p class="font2 fontxmid opac cent"><a href="http://localhost:9393/users/<%= @user %>/playlists/<%= playlist["id"] %>/play"><%= playlist["name"] %></a></p></div>
+              <%end%>
+            </div>
+
+
+</div>
+
+    <div class="footer-container debug">
+            <footer class="wrapper debug">
+
+            </footer>
