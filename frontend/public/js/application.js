@@ -1,17 +1,18 @@
 $(document).ready(function() {
 
 
-  songs=[]
-  $.ajax({
-    url: "http://localhost:3000" + window.location.pathname + "/edit",
-    method: "GET",
-    dataType: 'json'
-  }).done(function(response){
-    for(var i=0;i<response.playlist.length;i++){
-    // $('.current').append("<p id="+ response.playlist[i].track_id +">"+response.playlist[i].title+"</p>");
-    $('.current').append("<p id="+ response.playlist[i].track_id + " class="+response.playlist[i].artwork_url+">"+response.playlist[i].title+"</p>");
-    };
-  })
+  // songs=[]
+  // // localhost "/edit" bug
+  // $.ajax({
+  //   url: "http://localhost:3000" + window.location.pathname + "/edit",
+  //   method: "GET",
+  //   dataType: 'json'
+  // }).done(function(response){
+  //   for(var i=0;i<response.playlist.length;i++){
+  //   // $('.current').append("<p id="+ response.playlist[i].track_id +">"+response.playlist[i].title+"</p>");
+  //   $('.current').append("<p id="+ response.playlist[i].track_id + " class="+response.playlist[i].artwork_url+">"+response.playlist[i].title+"</p>");
+  //   };
+  // })
 
   //keystroke
   $('.search_bar').on("submit", function(event){

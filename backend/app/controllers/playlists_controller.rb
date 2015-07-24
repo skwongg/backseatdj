@@ -72,6 +72,7 @@ Dotenv.load
   def show
     # p params
     # @playlist=Playlist.find(params[:id])
+    p params
     @user = User.find(params[:user_id])
     @playlist = Playlist.find(params[:id])
     # @playlist_name = params[:name]
