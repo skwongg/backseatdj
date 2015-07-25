@@ -1,9 +1,7 @@
 class SongsController < ApplicationController
-
 Dotenv.load
 
   def index
-
     client=SoundCloud.new({
       :client_id => ENV['client_id'],
       :client_secret => ENV['client_secret'],
@@ -18,30 +16,17 @@ Dotenv.load
   def create
     p params
     p "*" * 100
-  ##ACTUAL playlist would exist already from the user instances
-  @user = User.find(params[:user_id])
-  # @song = @user.playlists.find(params[:playlist_id]).songs.create!(track_id: params[:track_id].to_i, title: params[:title])
-
-  @song = Song.create!(track_id: params[:track_id],
-                        title: params[:title],
-                        playlist_id: params[:playlist_id],
-                        artwork_url: params[:artwork_url],
-                        song_url: params[:song_url])
-  # render :json => @playlist
-
-
-   # @song = Song.new(track_id: params[:track_id].to_i)
-   # render json: @playlist
-   # redirect_to
-   render json: @song
+    @user = User.find(params[:user_id])
+    @song = Song.create!(track_id: params[:track_id],
+                          title: params[:title],
+                          playlist_id: params[:playlist_id],
+                          artwork_url: params[:artwork_url],
+                          song_url: params[:song_url])
+    render json: @song
   end
-
-
 
   def show
     p params
-    # Playlist.where
-
   end
 
   def upskip
@@ -72,7 +57,5 @@ Dotenv.load
     song.save
     render json: {id: song.id, skip: song.replay}
   end
-
-
 
 end

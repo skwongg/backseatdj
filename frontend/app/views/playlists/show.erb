@@ -1,35 +1,35 @@
 <div class="header-container debug">
-            <header class="wrapper clearfix debug">
-                <img src="http://i.imgur.com/hsMeLzq.png" width="320">
-            </header>
+  <header class="wrapper clearfix debug">
+    <!-- <img src="http://i.imgur.com/hsMeLzq.png" width="320"> -->
+  </header>
 </div>
 
- <div class="main-container back_img debug">
-            <div class="main wrapper clearfix debug">
-              <form class="search_bar" action="http://localhost:3000/songs" method="GET">
-                <input type="text" name="search" placeholder= "Search artist or title">
-                <input type="submit">
-              </form>
+<div class="main-container debug">
+  <div class="main wrapper clearfix debug">
+    <form class="search_bar" action="http://localhost:3000/songs" method="GET">
+      <input type="text" name="search" placeholder= "Search artist or title">
+      <input type="submit">
+    </form>
 
-              <div class="current font2 font1X5" style="float:right; margin:20px"><a href="/users/<%= @user %>/playlists/<%= @playlist_id %>/play">Play Playlist</a>
+    <div class="current font2 font1X5" style="float:right; margin:20px"><a href="/users/<%= @user %>/playlists/<%= @playlist_id %>/play">Play Playlist</a>
 
-              <p style="float: left;"></p>
-              </div>
+      <p style="float: left;"></p>
+    </div>
 
-              <form class="play_songs" action="http://localhost:9393/users/<%=@user%>              /playlists" method="GET">
-              </form>
+    <form class="play_songs" action="http://localhost:9393/users/<%=@user%>              /playlists" method="GET">
+    </form>
 
-                <h1 class="playlist font1 fontx2">Playlist:</h1>
-                <div class="nonajax"> </div>
-            </div>
+    <h1 class="playlist font1 fontx2">Playlist:</h1>
+    <div class="nonajax"> </div>
+  </div>
 
 
 </div>
 
 <div class="footer-container debug">
-            <footer class="wrapper debug">
+  <footer class="wrapper debug">
 
-            </footer>
+  </footer>
 </div>
 
 <script src="/js/playlistsearch.js"></script>
