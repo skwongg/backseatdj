@@ -25,8 +25,9 @@ end
 get '/users/:user_id/playlists/:id/play' do
   userid = params[:user_id].to_i
   listid = params[:id].to_i
-  response = HTTParty.get("http://localhost:3000/users/#{userid}/playlists/#{listid}/play").parsed_response
+  playlist_response = HTTParty.get("http://localhost:3000/users/#{userid}/playlists/#{listid}/play").parsed_response
   base_uri = 'https://backseatdj.firebaseio.com/'
+  @rep = playlist_response
   firebase = Firebase::Client.new(base_uri)
   response = firebase.set("playlist", { :playlistId => listid, :userId => userid })
   erb :"playlists/play"
