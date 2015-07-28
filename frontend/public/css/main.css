@@ -191,7 +191,9 @@ nav a:hover {
 .bold { font-weight: 900;  }
 .shad { text-shadow: 3px 3px 3px #fff; }
 
-.back_img { background-image: url('http://i.imgur.com/eGK3Kih.jpg');
+.back_img {
+    /*background-image: url('http://i.imgur.com/eGK3Kih.jpg');*/
+    background-image: url('http://www.hdwallpapersin.com/files/submissions/Music_High_Resolution_Wallpaper_346285123.jpg');
             background-position: 0% 90%;
             animation: animatedBackground 80s linear infinite;
             -moz-animation: animatedBackground 80s linear infinite;

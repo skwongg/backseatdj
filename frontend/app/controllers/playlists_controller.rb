@@ -8,9 +8,6 @@ get '/users/:user_id/playlists' do
   response = HTTParty.get("http://localhost:3000/users/#{params[:user_id]}/playlists").parsed_response
   @playlists = response["playlist"]
   @current_user = response["user"]
-
-
-
   erb :"playlists/index"
 end
 

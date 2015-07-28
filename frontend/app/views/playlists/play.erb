@@ -1,72 +1,44 @@
-
-    <div class="header-container debug">
-            <header class="wrapper clearfix debug">
-                <!-- <h1 class="title font1">Backseat DJ</h1> -->
-                <!-- <img src="http://i.imgur.com/hsMeLzq.png" width="320"> -->
-            </header>
+<div class="wrapper clearfix">
+  <img class='current_picture' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwew4Qc_B7b2ZyzQc_BVYDh9ToYYfH311PrQ0i7ugwosqIHK6f" style="width:35%;">
+</div>
+<div class="main-container debug">
+  <div class="main wrapper clearfix debug">
+    <div class="player">
+      <h4 class="trackTitle">
+        <a style="color:white; background:#3B3BBF">Current track</a>
+      </h4>
+      <img src="/player_rew.png" style="height:30px;" id="repeat">
+      <img src="/player_eject.png" style="height:30px;" id="prevsong">
+      <img src="/player_play.png" style="height:30px" id="play">
+      <img src="/player_pause.png" style="height:30px; display:none;" id="pause">
+      <img src="/player_stop.png" style="height:30px;" id="stop">
+      <img src="/player_end.png" style="height:30px;" id="next">
+      <input type="range" id="volume" min="0" max="100" value="50" onchange="showValue(this.value)" style="width:50px"/>
+      <div style="display:none;"> Volume:<span id="range">50</span></div>
     </div>
 
-      <div class="wrapper clearfix"> <img class='current_picture' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwew4Qc_B7b2ZyzQc_BVYDh9ToYYfH311PrQ0i7ugwosqIHK6f" style="width:35%;">
+    <div class="playlistp">
+      <div class="playlist" style="display:none">
+        <% @rep.each_with_index do |rep ,i| %>
+        <div class=<%=i%>>
+          <div class='playlistid'>id=<%=rep["playlist_id"]%></div>
+          <div class="songurl"><%=rep["song_url"]%></div>
+          <div class="trackid"><%=rep["track_id"]%></div>
+          <div class="songlist"><%=rep["title"]%></div>
+        </div>
+        <% end %>
       </div>
-    <div class="main-container debug">
-            <div class="main wrapper clearfix debug">
 
-
-
-              <div class="player">
-                <h4 class="trackTitle">Current track</h4>
-                <img src="/player_rew.png" style="height:30px;" id="repeat">
-                <img src="/player_play.png" style="height:30px" id="play">
-                <img src="/player_pause.png" style="height:30px; display:none;" id="pause">
-                <img src="/player_stop.png" style="height:30px;" id="stop">
-                <img src="/player_end.png" style="height:30px;" id="next">
-
-                  <input type="range" id="volume" min="0" max="100" value="50" onchange="showValue(this.value)" style="width:50px"/>
-                  <div style="display:none;"> Volume:<span id="range">50</span></div>
-              </div>
-
-
-              <!--<div class="player">
-                <h4 class="trackTitle">Current track</h4>
-                  <button id="play" class="btn">Play</button>
-                  <button id="pause" class="btn" style="display:none;">Pause</button>
-                  <button id="stop" class="btn">Stop</button>
-                  <button id="next" class="btn">Next</button>
-                  <button id="repeat" class="btn">Repeat</button>
-                  <input type="range" id="volume" min="0" max="100" value="50" onchange="showValue(this.value)" style="width:50px"/>
-                  <div style="display:none;"> Volume:<span id="range">50</span></div>
-              </div>-->
-
-
-              <div class="playlistp">
-                <!-- playlistp was playlist -->
-                    <div class="playlist" style="display:none">
-                       <% @rep.each_with_index do |rep ,i| %>
-                       <div class=<%=i%>>
-                         <div class='playlistid'>id=<%=rep["playlist_id"]%></div>
-                         <div class="songurl"><%=rep["song_url"]%></div>
-                         <div class="trackid"><%=rep["track_id"]%></div>
-                         <div class="songlist"><%=rep["title"]%></div>
-                       </div>
-                       <% end %>
-                    </div>
-                    <div class="info">
-                      <% @rep.each_with_index do |rep ,i| %>
-                        <!-- <div class="nothere animate"> -->
-                          <div class="font2 fontx1.5 opac"><a class="nothere animate" href="/songs/<%= rep["id"] %>"><%= rep["title"] %></a></div>
-                        <!-- </div> -->
-                      <%end%>
-                    </div>
-
-
-              </div>
-            </div>
+      <div class="info">
+        <% @rep.each_with_index do |rep ,i| %>
+        <div class="font2 fontx1.5 opac">
+          <a style="color:white; background:#3B3BBF" class="nothere animate" href="/songs/<%= rep["id"] %>"><%= rep["title"] %>
+          </a>
+        </div>
+        <%end%>
+      </div>
     </div>
-
-    <div class="footer-container debug">
-            <footer class="wrapper debug">
-
-            </footer>
-    </div>
+  </div>
+</div>
 
 <script src="/js/playlistshow.js"></script>
