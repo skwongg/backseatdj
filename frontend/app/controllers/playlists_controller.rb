@@ -1,5 +1,5 @@
-require 'httparty'
-require 'firebase'
+# require 'httparty'
+# require 'firebase'
 
 get '/users/:user_id/playlists' do
   @user = params[:user_id]
