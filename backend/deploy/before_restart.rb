@@ -1,1 +1,0 @@
-run "cd /srv/www/backseatdj/current && /usr/local/bin/bundle exec rake assets:precompile"
